@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>HashHero | Nescr0</title>
+        <link rel="stylesheet" href="../HashHero_New/CSS/stylesheet.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Exo+2&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+    </head>
+
+    <body onload="updatevariables()">
+        <header id="headsection">
+            <div id="pagetop">
+                <u style="color: rgb(26, 236, 26);"><b>H</u>ash <u style="color: rgb(26, 236, 26);">H</u>er0</b><br>
+            </div>
+            <div id="newsdiv">
+                <div id="scrollbar">
+                    <div class="newsbar">test123 test123</div>
+                </div>
+                <div id="newsnamediv">
+                    <b><span id="newsname">BSNBC &nbsp;NEWS</span></b>
+                </div>
+            </div>
+            <div class="clearright"></div>
+            <div class="tab">
+                <button class="tablinks" onclick="openPage('Terminal', this)" id="opendefault">Terminal</button> &nbsp; &nbsp;
+                <button class="tablinks" onclick="openPage('Prestige', this)">Prestige</button> &nbsp; &nbsp;
+                <button class="tablinks" onclick="openPage('Guide', this)">Guide</button> &nbsp; &nbsp;
+                <button class="tablinks" onclick="openPage('Settings', this)">Settings</button> &nbsp; &nbsp;
+                <button class="tablinks" onclick="openPage('Statistics', this)">Statistics</button> &nbsp; &nbsp;
+            </div>
+        </header>
+
+        <!-----------------------------------------------------Terminal--------------------------------------------------------------->
+
+        <div id="Terminal" class="tabcontent">
+            <div>
+                <button onclick="mButtonClick(1)" id="incbutton">Compare Hash</button>
+            </div>
+            <br>
+            <div id="upgrade1div">
+                <button id="up1button" onclick="UpgradeWordlist(1)">Improve Wordlist (+1 Multiplier Level)</button><br>
+                Multiplier Level: <span type="text" id="multiplierlvl"></span><br>
+                Production ($/click(Manual/Auto)): <span type="text" id="multiplier"></span><br>
+                Price: <b><u>$<span type="text" id="upone1base" value="10" readonly></span></u></b><br>
+            </div>
+            <br>
+            <div id="upgrade2div">
+                <button id="up2button" onclick="Upgrade2Click(1)">Hashfox.exe (+1 h/s)</button><br>
+                Auto Rate: <b><u><span type="text" id="uptwo2"></span></u></b> h/s<br>
+                Price: <b><u>$<span type="text" id="uptwo2base"></span></u></b>
+            </div>
+            <div id="gpubutton">
+                <button id="gpuup" onclick="GPUClick()">Buy GPU (+1 Instance/Worker) </button><br>
+                <span id="gpucountline">GPUs Owned: <u><b><span id="gpucount"></span></b></u></span>
+            </div>
+            <div id="GPU0">
+                <header id="GPU0Header">
+                    <h3 id="GPU0Title">GPU#0 Hashing Output</h3>
+                    <button class="tablinks" id="showlog" onclick="LogShow()"><div id="hashlogheader">Hash Log</div></button>
+                </header>
+                <div class="clearright"></div>
+                <div id="hashoutput">
+                Hashlist: <span type="text" class="hashout"></span>
+                </div>
+                <div id="GPU0wordoutput">
+                Wordlist: <span type="text" id="wordout"></span>
+                </div>
+                <footer id="hashfooter">
+                    <h6 id="statline">Status: <span type="text" id="found"></span></h6>
+                    <h6 id="algline">Algorithm: <span type="text" id="algorithm"></span></h6>
+                </footer>
+            </div>
+            <div id="GPU1">
+                <header id="GPU1Header" class="w3-container">
+                    <h3 id="GPU1Title">GPU#1 Hashing Output &nbsp;&nbsp; <span id="GPU1FanLine">Fan(s): <span id="GPU1FanStatus">None</span></span></h3>
+                </header>
+                <div id="hashoutput">
+                    Hashlist: <span type="text" class="hashout"></span>
+                </div>
+                <div id="GPU1Wordoutput">
+                Wordlist: <span type="text" id="gpu1wordout"></span>
+                </div>
+                <footer id="GPU1Footer">
+                    <h6 id="gpu1statline">Status: <span type="text" id="gpu1found"></span></h6>
+                    <h6 id="GPU1Alg">Algorithm: <span type="text" id="GPU1algorithm">MD5</span></h6>
+                    <h6 id="GPU1Templine">Temp: <span id="tempvar"></span>&#8451</h6>
+                </footer>
+            </div>
+            <div id="GPU2">
+                <header id="GPU2Header">
+                    <h3 id="GPU2Title">GPU#2 Hashing Output</h3>
+                </header>
+                <div id="hashoutput">
+                    Hashlist: <span type="text" class="hashout"></span>
+                </div>
+                <div id="GPU2Wordoutput">
+                Wordlist: <span type="text" id="gpu2wordout"></span>
+                </div>
+                <footer id="GPU2Footer">
+                    <h6 id="gpu2statline">Status: <span type="text" id="gpu2found"></span></h6>
+                    <h6 id="GPU2Alg">Algorithm: <span type="text" id="GPU2algorithm">MD5</span></h6>
+                    <h6 id="GPU2Templine">Temp: <span id="tempvar2"></span>&#8451</h6>
+                </footer>
+            </div>
+            <div id="testtools">
+                <p><u>Testing Tools</u></p>
+                <button id="cheatd" onclick="numcheatd()">+$10</button>&nbsp;<span>(+$10)</span><br>
+                <button id="cheath" onclick="numcheath()">+$1H</button>&nbsp;<span>(+$100)</span><br>
+                <button id="cheatk" onclick="numcheatk()">+$1K</button>&nbsp;<span>(+$1,000)</span><br>
+                <button id="cheatm" onclick="numcheatm()">+$1M</button>&nbsp;<span>(+$1,000,000)</span><br>
+                <button id="cheatb" onclick="numcheatb()">+$1B</button>&nbsp;<span>(+$1,000,000,000)</span><br>
+                <button id="cheatt" onclick="numcheatt()">+$1T</button>&nbsp;<span>(+$1,000,000,000,000)</span><br>
+            </div>
+            <div id="logbox">
+                <h3>Hash Log:</h3>
+            </div>
+        </div>
+        <div id="assets">
+            <div class="currencycard" id="invbox">
+                <header id="ccardhead">
+                        <b style="color: rgb(26, 236, 26); padding-top: 5px; "><u>Assets:</u></b>
+                </header>
+                <div id="ccardcontent">
+                    <b style="color:rgb(26,236,26);margin-left:10px;padding-right:1px;font-size:14px;">$.....</b><span class="currency" id="inc"></span><br>
+                    <b style="color:rgb(26,236,26);margin-left:10px;padding-right:1px;font-size:14px;">₿.....</b><span class="currency" id="circ">0</span><br>
+                    <b style="color:rgb(26,236,26);margin-left:10px;padding-right:1px;font-size:14px;">⛃.....</b><span class="currency" id="gpucount">0</span><br>
+                </div>
+            </div>
+        </div>
+        <!----------------------------------------------------Prestige------------------------------------------------------------------------->
+
+
+        <div id="Prestige" class="tabcontent">
+            <div>
+                <h1><b>Prestige</b></h1>
+            </div>
+            <div id="prestdiv">
+                <button id="prestigebutton" onclick="PrestigeClick()">Prestige</button>
+                Level: <u><b><span type="text" id="tempprest"></span></b></u> (Prest Mult: <u><b><span type="text" id="realprest"></span>x</b></u>)<br><u id="prestcost">Prestige Cost: <span type="text" id="prestbase"></span> Found Hashes</u>
+            </div>
+        </div>
+
+
+        <!------------------------------------------------------Guide--------------------------------------------------------------------------->
+        
+
+        <div id="Guide" class="tabcontent">
+            <div>
+                <h1><b>Guide</b></h1>
+            </div>
+            <div>
+                <p>This guide will assist you in understanding what you may encounter throughout your gameplay.</p>
+            </div>
+        </div>
+
+        <!----------------------------------------------------Settings--------------------------------------------------------------------------->
+
+
+        <div id="Settings" class="tabcontent">
+            <h1><b>Settings</b></h1>
+            <button onclick="save()">Save</button>
+            <button onclick="load()">Load</button>
+            <button onclick="clearsave()">Clear Save</button>
+            <button onclick="newstoggle()">Toggle News On/Off</button>
+        </div>
+
+
+        <!----------------------------------------------------Statistics------------------------------------------------------------------------->
+        
+
+        <div id="Statistics" class="tabcontent">
+            <h1><b><u>Statistics</u></b></h1>
+            <div id="stats">
+               <!-- <div id="manualclicks"><br>
+                    Hashes Compared (Manual): <span type="text" id="clicked"></span>
+                </div>
+                <div id="autoclicks">
+                    Hashes Compared (Auto): <span type="text" id="autoclicked"></span>
+                </div>
+                <div id="totalclicks">
+                    Hashes Compared (Total): <span type="text" id="totalclicked"></span>
+                </div>
+                <div id="founds">
+                    Hashes Found (Total): <span type="text" id="totalfound"></span>
+                </div>
+                <div id="asf">
+                    Hashes Compared (Since Found): <span type="text" id="asincef"></span>
+                </div>-->
+                <div id="statcardcompared">
+                    <header id="comparedheader">
+                        <b><u><span>Hash Related</span></u></b>
+                    </header>
+                    <div id="manualclicks" class="comparedbody">
+                        Hashes Compared (Manual): <span type="text" id="clicked"></span>
+                    </div>
+                    <div id="autoclicks" class="comparedbody">
+                        Hashes Compared (Auto): <span type="text" id="autoclicked"></span>
+                    </div>
+                    <div id="totalclicks" class="comparedbody">
+                        Hashes Compared (Total): <span type="text" id="totalclicked"></span>
+                    </div>
+                    <div id="founds" class="comparedbody">
+                        Hashes Found (Total): <span type="text" id="totalfound"></span>
+                    </div>
+                    <div id="asf" class="comparedbody">
+                        Hashes Compared (Since Found): <span type="text" id="asincef"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="JS/Dependencies/jquery.js"></script>
+        <script src="JS/Dependencies/notify.js"></script>
+        <script src="JS/Dependencies/bootstrap.js"></script>
+        <script src="JS/util.js"></script>
+        <script src="JS/gpu.js"></script>
+        <script src="JS/menu.js"></script>
+        <script src="JS/settings.js"></script>
+        <script src="JS/core.js"></script>
+    </body>
+</html>
